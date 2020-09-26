@@ -1,3 +1,3 @@
-#SPACESHIP
+# blackjack
 
-VSC plugins: live server, live sass compiler
+VSC plugins: Live-server, Live Sass Compiler
