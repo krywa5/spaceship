@@ -2,7 +2,7 @@ import { Missile } from './Missile.js';
 
 export class Spaceship {
     missiles = [];
-    #moveSpeed = 5;
+    #moveSpeed = 6;
     #leftArrow = false;
     #rightArrow = false;
 
@@ -42,7 +42,7 @@ export class Spaceship {
                 case 37:  // left arrow
                     this.#leftArrow = false;
                     break;
-                case 39:  // rigth arrow
+                case 39:  // right arrow
                     this.#rightArrow = false;
                     break;
             }
@@ -59,10 +59,10 @@ export class Spaceship {
     }
 
     #whatKey() {
-        if (this.#leftArrow && this.#getPosition() > 0) {
+        if (this.#leftArrow && this.#getPosition() > 12) { // 12 - missile width
             this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#moveSpeed}px`
         }
-        if (this.#rightArrow && this.#getPosition() < window.innerWidth) {
+        if (this.#rightArrow && this.#getPosition() + 12 < window.innerWidth) {
             this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#moveSpeed}px`
         }
     }

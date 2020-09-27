@@ -6,3 +6,7 @@ $ships-animation-time: 300ms;
 $explosion-animation-time: 600ms;
 
 $color-btn: #09fcfd;
+
+:root {
+    --explosion-animation-time: #{$explosion-animation-time};
+}

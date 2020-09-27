@@ -1,3 +1,7 @@
+:root {
+  --explosion-animation-time: 600ms;
+}
+
 @-webkit-keyframes move-8-units-X {
   from {
     background-position-x: 0;
@@ -108,6 +112,7 @@ body {
   height: 100vh;
   background-color: #000;
   position: relative;
+  overflow: hidden;
 }
 
 .spaceship {
@@ -120,11 +125,13 @@ body {
 }
 
 .enemy {
+  position: fixed;
   width: 64px;
   height: 64px;
   background-image: url(../assets/images/enemy.png);
   -webkit-animation: move-5-units-X 300ms steps(5) infinite;
           animation: move-5-units-X 300ms steps(5) infinite;
+  z-index: 5;
 }
 
 .enemy--big {
@@ -133,9 +140,11 @@ body {
   background-image: url(../assets/images/enemy-big.png);
   -webkit-animation: move-16-units-X 300ms steps(8) infinite;
           animation: move-16-units-X 300ms steps(8) infinite;
+  z-index: 4;
 }
 
 .explosion {
+  position: fixed;
   width: 64px;
   height: 64px;
   background-image: url(../assets/images/explosion.png);

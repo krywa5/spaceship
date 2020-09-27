@@ -16,6 +16,7 @@ body {
     height: 100vh;
     background-color: #000;
     position: relative;
+    overflow: hidden;
 }
 
 .spaceship {
@@ -27,21 +28,24 @@ body {
 }
 
 .enemy {
+    position: fixed;
     width: $size-unit;
     height: $size-unit;
     background-image: url(../assets/images/enemy.png);
     animation: move-5-units-X $ships-animation-time steps(5) infinite;
-
+    z-index: 5;
 
     &--big {
         width: $size-unit * 2;
         height: $size-unit * 2;
         background-image: url(../assets/images/enemy-big.png);
         animation: move-16-units-X $ships-animation-time steps(8) infinite;
+        z-index: 4;
     }
 }
 
 .explosion {
+    position: fixed;
     width: $size-unit;
     height: $size-unit;
     background-image: url(../assets/images/explosion.png);
