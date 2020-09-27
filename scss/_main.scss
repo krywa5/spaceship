@@ -19,6 +19,7 @@ body {
 }
 
 .spaceship {
+    position: fixed;
     width: $size-unit;
     height: $size-unit;
     background-image: url(../assets/images/ship.png);
@@ -44,17 +45,18 @@ body {
     width: $size-unit;
     height: $size-unit;
     background-image: url(../assets/images/explosion.png);
-    animation: move-17-units-X $explosion-animation-time steps(17) infinite;
+    animation: move-17-units-X $explosion-animation-time steps(17) forwards;
 
     &--big {
         width: $size-unit * 2;
         height: $size-unit * 2;
         background-image: url(../assets/images/explosion-big.png);
-        animation: move-34-units-X $explosion-animation-time steps(17) infinite;
+        animation: move-34-units-X $explosion-animation-time steps(17) forwards;
     }
 }
 
-.missle {
+.missile {
+    position: absolute;
     background-image: url(../assets/images/missile.png);
     background-size: cover;
     width: 12px;

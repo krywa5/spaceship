@@ -111,6 +111,7 @@ body {
 }
 
 .spaceship {
+  position: fixed;
   width: 64px;
   height: 64px;
   background-image: url(../assets/images/ship.png);
@@ -138,19 +139,20 @@ body {
   width: 64px;
   height: 64px;
   background-image: url(../assets/images/explosion.png);
-  -webkit-animation: move-17-units-X 600ms steps(17) infinite;
-          animation: move-17-units-X 600ms steps(17) infinite;
+  -webkit-animation: move-17-units-X 600ms steps(17) forwards;
+          animation: move-17-units-X 600ms steps(17) forwards;
 }
 
 .explosion--big {
   width: 128px;
   height: 128px;
   background-image: url(../assets/images/explosion-big.png);
-  -webkit-animation: move-34-units-X 600ms steps(17) infinite;
-          animation: move-34-units-X 600ms steps(17) infinite;
+  -webkit-animation: move-34-units-X 600ms steps(17) forwards;
+          animation: move-34-units-X 600ms steps(17) forwards;
 }
 
-.missle {
+.missile {
+  position: absolute;
   background-image: url(../assets/images/missile.png);
   background-size: cover;
   width: 12px;
