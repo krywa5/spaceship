@@ -1,3 +1,93 @@
+@-webkit-keyframes move-8-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -512px;
+  }
+}
+
+@keyframes move-8-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -512px;
+  }
+}
+
+@-webkit-keyframes move-5-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -320px;
+  }
+}
+
+@keyframes move-5-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -320px;
+  }
+}
+
+@-webkit-keyframes move-16-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -1024px;
+  }
+}
+
+@keyframes move-16-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -1024px;
+  }
+}
+
+@-webkit-keyframes move-17-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -1088px;
+  }
+}
+
+@keyframes move-17-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -1088px;
+  }
+}
+
+@-webkit-keyframes move-34-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -2176px;
+  }
+}
+
+@keyframes move-34-units-X {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: -2176px;
+  }
+}
+
 *,
 *::after,
 *::before {
@@ -18,6 +108,53 @@ body {
   height: 100vh;
   background-color: #000;
   position: relative;
+}
+
+.spaceship {
+  width: 64px;
+  height: 64px;
+  background-image: url(../assets/images/ship.png);
+  -webkit-animation: move-8-units-X 300ms steps(8) infinite;
+          animation: move-8-units-X 300ms steps(8) infinite;
+}
+
+.enemy {
+  width: 64px;
+  height: 64px;
+  background-image: url(../assets/images/enemy.png);
+  -webkit-animation: move-5-units-X 300ms steps(5) infinite;
+          animation: move-5-units-X 300ms steps(5) infinite;
+}
+
+.enemy--big {
+  width: 128px;
+  height: 128px;
+  background-image: url(../assets/images/enemy-big.png);
+  -webkit-animation: move-16-units-X 300ms steps(8) infinite;
+          animation: move-16-units-X 300ms steps(8) infinite;
+}
+
+.explosion {
+  width: 64px;
+  height: 64px;
+  background-image: url(../assets/images/explosion.png);
+  -webkit-animation: move-17-units-X 600ms steps(17) infinite;
+          animation: move-17-units-X 600ms steps(17) infinite;
+}
+
+.explosion--big {
+  width: 128px;
+  height: 128px;
+  background-image: url(../assets/images/explosion-big.png);
+  -webkit-animation: move-34-units-X 600ms steps(17) infinite;
+          animation: move-34-units-X 600ms steps(17) infinite;
+}
+
+.missle {
+  background-image: url(../assets/images/missile.png);
+  background-size: cover;
+  width: 12px;
+  height: 24px;
 }
 
 .information {

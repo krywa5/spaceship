@@ -1,0 +1,46 @@
+@keyframes move-8-units-X {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: $size-unit * -8;
+    }
+ }
+
+
+@keyframes move-5-units-X {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: $size-unit * -5;
+    }
+}
+
+
+@keyframes move-16-units-X {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: $size-unit * -16;
+    }
+}
+
+@keyframes move-17-units-X {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: $size-unit * -17;
+    }
+}
+
+@keyframes move-34-units-X {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: $size-unit * -34;
+    }
+}

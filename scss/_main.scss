@@ -19,7 +19,46 @@ body {
 }
 
 .spaceship {
+    width: $size-unit;
+    height: $size-unit;
+    background-image: url(../assets/images/ship.png);
+    animation: move-8-units-X $ships-animation-time steps(8) infinite;
+}
 
+.enemy {
+    width: $size-unit;
+    height: $size-unit;
+    background-image: url(../assets/images/enemy.png);
+    animation: move-5-units-X $ships-animation-time steps(5) infinite;
+
+
+    &--big {
+        width: $size-unit * 2;
+        height: $size-unit * 2;
+        background-image: url(../assets/images/enemy-big.png);
+        animation: move-16-units-X $ships-animation-time steps(8) infinite;
+    }
+}
+
+.explosion {
+    width: $size-unit;
+    height: $size-unit;
+    background-image: url(../assets/images/explosion.png);
+    animation: move-17-units-X $explosion-animation-time steps(17) infinite;
+
+    &--big {
+        width: $size-unit * 2;
+        height: $size-unit * 2;
+        background-image: url(../assets/images/explosion-big.png);
+        animation: move-34-units-X $explosion-animation-time steps(17) infinite;
+    }
+}
+
+.missle {
+    background-image: url(../assets/images/missile.png);
+    background-size: cover;
+    width: 12px;
+    height: 24px;
 }
 
 .information {
@@ -96,6 +135,7 @@ body {
         }
     }
 }
+
 
 
 .hide {
