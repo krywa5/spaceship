@@ -1,3 +1,5 @@
+import classes from './classes.js';
+
 export class Enemy {
 
     constructor(container, enemySpeedRatio, enemyType) {
@@ -16,9 +18,9 @@ export class Enemy {
     }
 
     #setEnemy() {
-        this.element.classList.add('enemy');
+        this.element.classList.add(classes.enemy);
         if (this.enemyType === 'enemy--big') {
-            this.element.classList.add('enemy--big');
+            this.element.classList.add(classes.enemyBig);
         }
         this.container.appendChild(this.element);
         this.element.style.top = '0px';
@@ -46,9 +48,9 @@ export class Enemy {
 
     explode() {
         this.element.className = '';
-        this.element.classList.add('explosion');
+        this.element.classList.add(classes.explosion);
         if (this.enemyType === 'enemy--big') {
-            this.element.classList.add('explosion--big');
+            this.element.classList.add(classes.explosionBig);
         }
         clearInterval(this.interval);
         const animationTime = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--explosion-animation-time'), 10);

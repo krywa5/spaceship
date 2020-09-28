@@ -1,5 +1,6 @@
 import { Spaceship } from './Spaceship.js';
 import { Enemy } from './Enemy.js';
+import classes from './classes.js';
 
 
 class Game {
@@ -35,7 +36,7 @@ class Game {
     }
 
     #newGame() {
-        this.#htmlElements.modal.classList.add('hide');
+        this.#htmlElements.modal.classList.add(classes.hide);
         this.#createEnemyInterval = setInterval(() => this.#randomNewEnemy(), this.enemyRenderTime)
         this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
         this.#lives = 3;
@@ -47,7 +48,7 @@ class Game {
     }
 
     #endGame() {
-        this.#htmlElements.modal.classList.remove('hide');
+        this.#htmlElements.modal.classList.remove(classes.hide);
         this.#htmlElements.scoreInfo.textContent = `You loose! Your score is ${this.#score}`;
         this.enemies.forEach(enemy => enemy.explode());
         this.enemies.length = 0;
@@ -77,8 +78,8 @@ class Game {
     #updateLives() {
         this.#lives--;
         this.#updateLivesText();
-        this.#htmlElements.container.classList.add('hit');
-        setTimeout(() => this.#htmlElements.container.classList.remove('hit'), 100);
+        this.#htmlElements.container.classList.add(classes.hit);
+        setTimeout(() => this.#htmlElements.container.classList.remove(classes.hit), 100);
         if (!this.#lives) {
             this.#endGame();
         }

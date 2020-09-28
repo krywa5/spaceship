@@ -1,3 +1,5 @@
+import classes from './classes.js';
+
 export class Missile {
     #missileSpeed = 5; // higher value => lower speed
 
@@ -10,7 +12,7 @@ export class Missile {
     }
 
     init() {
-        this.element.classList.add('missile');
+        this.element.classList.add(classes.missile);
         this.container.appendChild(this.element);
         this.element.style.left = `${this.x - this.element.offsetWidth / 2 - 2}px`; // - 2 manual missile position fix
         this.element.style.top = `${this.y - this.element.offsetHeight}px`;
