@@ -1,6 +1,7 @@
+import classes from './classes.js';
+import htmlElements from './htmlElements.js';
 import { Spaceship } from './Spaceship.js';
 import { Enemy } from './Enemy.js';
-import classes from './classes.js';
 
 
 class Game {
@@ -12,17 +13,7 @@ class Game {
     #score = null;
     #lives = null;
 
-    #htmlElements = {
-        spaceship: document.querySelector('[data-spaceship]'),
-        container: document.querySelector('[data-container]'),
-        score: document.querySelector('[data-score]'),
-        lives: document.querySelector('[data-lives]'),
-        modal: document.querySelector('[data-modal]'),
-        scoreInfo: document.querySelector('[data-score-info]'),
-        button: document.querySelector('[data-button]'),
-    };
-
-    #ship = new Spaceship(this.#htmlElements.spaceship, this.#htmlElements.container);
+    #ship = new Spaceship(htmlElements.spaceship, htmlElements.container);
 
     #checkPositionInterval = null;
     #createEnemyInterval = null;
@@ -30,13 +21,13 @@ class Game {
     init() {
         this.#ship.init();
         this.#newGame();
-        this.#htmlElements.button.addEventListener('click', () => {
+        htmlElements.button.addEventListener('click', () => {
             this.#newGame();
         })
     }
 
     #newGame() {
-        this.#htmlElements.modal.classList.add(classes.hide);
+        htmlElements.modal.classList.add(classes.hide);
         this.#createEnemyInterval = setInterval(() => this.#randomNewEnemy(), this.enemyRenderTime)
         this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
         this.#lives = 3;
@@ -48,8 +39,8 @@ class Game {
     }
 
     #endGame() {
-        this.#htmlElements.modal.classList.remove(classes.hide);
-        this.#htmlElements.scoreInfo.textContent = `You loose! Your score is ${this.#score}`;
+        htmlElements.modal.classList.remove(classes.hide);
+        htmlElements.scoreInfo.textContent = `You loose! Your score is ${this.#score}`;
         this.enemies.forEach(enemy => enemy.explode());
         this.enemies.length = 0;
         clearInterval(this.#createEnemyInterval);
@@ -57,7 +48,7 @@ class Game {
     }
 
     #createNewEnemy(enemyType = 'enemy') {
-        const enemy = new Enemy(this.#htmlElements.container, this.enemySpeedRatio, enemyType);
+        const enemy = new Enemy(htmlElements.container, this.enemySpeedRatio, enemyType);
         enemy.init();
         this.enemies.push(enemy);
     }
@@ -78,19 +69,19 @@ class Game {
     #updateLives() {
         this.#lives--;
         this.#updateLivesText();
-        this.#htmlElements.container.classList.add(classes.hit);
-        setTimeout(() => this.#htmlElements.container.classList.remove(classes.hit), 100);
+        htmlElements.container.classList.add(classes.hit);
+        setTimeout(() => htmlElements.container.classList.remove(classes.hit), 100);
         if (!this.#lives) {
             this.#endGame();
         }
     }
 
     #updateScoreText() {
-        this.#htmlElements.score.textContent = this.#score;
+        htmlElements.score.textContent = this.#score;
     }
 
     #updateLivesText() {
-        this.#htmlElements.lives.textContent = this.#lives;
+        htmlElements.lives.textContent = this.#lives;
     }
 
 
