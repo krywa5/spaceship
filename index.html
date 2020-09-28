@@ -13,15 +13,15 @@
     <div class="container" data-container>
         <div class="spaceship" data-spaceship></div>
         <section class="information">
-            <article class="information__content">Score: 0</article>
-            <article class="information__content">Lives: 3</article>
+            <article class="information__content">Score: <span class="score" data-score>0</span></article>
+            <article class="information__content">Lives: <span class="lives" data-lives>3</span></article>
         </section>
-        <div class="modal hide">
+        <div class="modal hide" data-modal>
             <div class="modal__content">
-                <p class="modal__text">
+                <p class="modal__text" data-score-info>
                     You loose! Start new game!
                 </p>
-                <button class="modal__button restart-game">New game</button>
+                <button class="modal__button restart-game" data-button>New game</button>
             </div>
         </div>
     </div>

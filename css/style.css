@@ -254,6 +254,10 @@ body {
   opacity: 1;
 }
 
+.hit {
+  background-color: #510303;
+}
+
 .hide {
   display: none;
 }

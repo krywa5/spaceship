@@ -8,10 +8,17 @@ class Game {
     enemySpeedRatio = 10; // lower value => faster enemies speed
 
     enemies = [];
+    #score = null;
+    #lives = null;
 
     #htmlElements = {
         spaceship: document.querySelector('[data-spaceship]'),
-        container: document.querySelector('[data-container]')
+        container: document.querySelector('[data-container]'),
+        score: document.querySelector('[data-score]'),
+        lives: document.querySelector('[data-lives]'),
+        modal: document.querySelector('[data-modal]'),
+        scoreInfo: document.querySelector('[data-score-info]'),
+        button: document.querySelector('[data-button]'),
     };
 
     #ship = new Spaceship(this.#htmlElements.spaceship, this.#htmlElements.container);
@@ -22,11 +29,30 @@ class Game {
     init() {
         this.#ship.init();
         this.#newGame();
+        this.#htmlElements.button.addEventListener('click', () => {
+            this.#newGame();
+        })
     }
 
     #newGame() {
+        this.#htmlElements.modal.classList.add('hide');
         this.#createEnemyInterval = setInterval(() => this.#randomNewEnemy(), this.enemyRenderTime)
         this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
+        this.#lives = 3;
+        this.#score = 0;
+        this.#updateLivesText();
+        this.#updateScoreText();
+        this.#ship.element.style.left = '0px';
+        this.#ship.setPosition();
+    }
+
+    #endGame() {
+        this.#htmlElements.modal.classList.remove('hide');
+        this.#htmlElements.scoreInfo.textContent = `You loose! Your score is ${this.#score}`;
+        this.enemies.forEach(enemy => enemy.explode());
+        this.enemies.length = 0;
+        clearInterval(this.#createEnemyInterval);
+        clearInterval(this.#checkPositionInterval);
     }
 
     #createNewEnemy(enemyType = 'enemy') {
@@ -40,6 +66,34 @@ class Game {
         randomNumber % 5 ? this.#createNewEnemy('enemy') : this.#createNewEnemy('enemy--big');
     }
 
+    #updateScore() {
+        this.#score++;
+        if (!(this.#score % 5)) { // enemies in time acceleration
+            this.enemySpeedRatio--;
+        }
+        this.#updateScoreText();
+    }
+
+    #updateLives() {
+        this.#lives--;
+        this.#updateLivesText();
+        this.#htmlElements.container.classList.add('hit');
+        setTimeout(() => this.#htmlElements.container.classList.remove('hit'), 100);
+        if (!this.#lives) {
+            this.#endGame();
+        }
+    }
+
+    #updateScoreText() {
+        this.#htmlElements.score.textContent = this.#score;
+    }
+
+    #updateLivesText() {
+        this.#htmlElements.lives.textContent = this.#lives;
+    }
+
+
+
     #checkPosition() {
         this.enemies.forEach((enemy, enemyIndex, enemiesArray) => {
             const enemyPosition = {
@@ -52,6 +106,7 @@ class Game {
             if (enemyPosition.top > window.innerHeight) {
                 enemy.explode();
                 enemiesArray.splice(enemyIndex, 1);
+                this.#updateLives();
             }
             this.#ship.missiles.forEach((missile, missileIndex, missilesArray) => {
                 const missilePosition = {
@@ -71,6 +126,7 @@ class Game {
                     }
                     missile.remove();
                     missilesArray.splice(missileIndex, 1);
+                    this.#updateScore();
                 }
 
                 if (missilePosition.bottom < 0) {

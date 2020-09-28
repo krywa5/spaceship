@@ -142,7 +142,9 @@ body {
     }
 }
 
-
+.hit {
+    background-color: $hit-color;
+}
 
 .hide {
     display: none;
